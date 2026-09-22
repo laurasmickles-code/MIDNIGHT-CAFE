@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEON DODGE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="game-shell">
+
+    <header class="topbar">
+      <div>
+        <h1>NEON DODGE</h1>
+        <p>survive. collect. don't explode.</p>
+      </div>
+
+      <div class="top-actions">
+        <button id="soundBtn" title="Toggle sound">🔊</button>
+        <button id="pauseBtn">PAUSE</button>
+      </div>
+    </header>
+
+    <section class="hud">
+      <div class="stat">
+        <span>SCORE</span>
+        <strong id="score">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>BEST</span>
+        <strong id="best">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>LEVEL</span>
+        <strong id="level">1</strong>
+      </div>
+
+      <div class="stat">
+        <span>COMBO</span>
+        <strong id="combo">x1</strong>
+      </div>
+    </section>
+
+    <div class="canvas-wrap">
+      <canvas id="gameCanvas"></canvas>
+
+      <div id="startScreen" class="overlay">
+        <div class="panel">
+          <div class="big-icon">◆</div>
+          <h2>READY?</h2>
+          <p>Dodge the red hazards.<br>Collect the blue energy.</p>
+
+          <button id="startBtn" class="main-btn">
+            START GAME
+          </button>
+
+          <div class="controls">
+            <span>⌨️ WASD / ARROWS</span>
+            <span>🖱️ MOUSE</span>
+            <span>␣ PAUSE</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="overlay hidden">
+        <div class="panel">
+          <div class="big-icon">Ⅱ</div>
+          <h2>PAUSED</h2>
+          <p>Your ship is chilling.</p>
+          <button id="resumeBtn" class="main-btn">
+            RESUME
+          </button>
+        </div>
+      </div>
+
+      <div id="gameOverScreen" class="overlay hidden">
+        <div class="panel">
+          <div class="big-icon danger">✦</div>
+          <h2>GAME OVER</h2>
+
+          <p>
+            You survived for
+            <strong id="finalTime">0</strong>s
+          </p>
+
+          <div class="final-score">
+            <span>SCORE</span>
+            <strong id="finalScore">0</strong>
+          </div>
+
+          <p id="newBest" class="new-best hidden">
+            ✨ NEW HIGH SCORE ✨
+          </p>
+
+          <button id="restartBtn" class="main-btn">
+            PLAY AGAIN
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span id="status">SYSTEM READY</span>
+      <span>NEON DODGE v1.0</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
