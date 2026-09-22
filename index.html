@@ -1,115 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEON DODGE</title>
+
+  <title>Midnight Café</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="game-shell">
 
-    <header class="topbar">
+  <div class="game">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
       <div>
-        <h1>NEON DODGE</h1>
-        <p>survive. collect. don't explode.</p>
+        <h1>☾ MIDNIGHT CAFÉ</h1>
+        <p class="subtitle">small café. questionable hours.</p>
       </div>
 
-      <div class="top-actions">
-        <button id="soundBtn" title="Toggle sound">🔊</button>
-        <button id="pauseBtn">PAUSE</button>
+      <div class="header-buttons">
+        <button id="soundButton">🔊</button>
+        <button id="helpButton">?</button>
       </div>
+
     </header>
 
-    <section class="hud">
+
+    <!-- TOP STATS -->
+
+    <section class="stats">
+
       <div class="stat">
-        <span>SCORE</span>
-        <strong id="score">0</strong>
+        <span>DAY</span>
+        <strong id="day">1</strong>
       </div>
 
       <div class="stat">
-        <span>BEST</span>
-        <strong id="best">0</strong>
+        <span>TIME</span>
+        <strong id="time">00:00</strong>
+      </div>
+
+      <div class="stat money">
+        <span>MONEY</span>
+        <strong id="money">$20</strong>
       </div>
 
       <div class="stat">
-        <span>LEVEL</span>
-        <strong id="level">1</strong>
+        <span>REP</span>
+        <strong id="reputation">50</strong>
       </div>
 
       <div class="stat">
         <span>COMBO</span>
-        <strong id="combo">x1</strong>
+        <strong id="combo">x0</strong>
       </div>
+
     </section>
 
-    <div class="canvas-wrap">
-      <canvas id="gameCanvas"></canvas>
 
-      <div id="startScreen" class="overlay">
-        <div class="panel">
-          <div class="big-icon">◆</div>
-          <h2>READY?</h2>
-          <p>Dodge the red hazards.<br>Collect the blue energy.</p>
+    <!-- GAME AREA -->
 
-          <button id="startBtn" class="main-btn">
-            START GAME
-          </button>
+    <main class="main">
 
-          <div class="controls">
-            <span>⌨️ WASD / ARROWS</span>
-            <span>🖱️ MOUSE</span>
-            <span>␣ PAUSE</span>
-          </div>
+      <!-- CUSTOMERS -->
+
+      <section class="customers-panel">
+
+        <div class="section-title">
+          <h2>Customers</h2>
+          <span id="customerCount">0 / 3</span>
         </div>
-      </div>
 
-      <div id="pauseScreen" class="overlay hidden">
-        <div class="panel">
-          <div class="big-icon">Ⅱ</div>
-          <h2>PAUSED</h2>
-          <p>Your ship is chilling.</p>
-          <button id="resumeBtn" class="main-btn">
-            RESUME
-          </button>
+        <div id="customers" class="customers"></div>
+
+        <div id="emptyCustomers" class="empty">
+          No customers right now...
+          <br>
+          <small>Someone will probably wander in.</small>
         </div>
-      </div>
 
-      <div id="gameOverScreen" class="overlay hidden">
-        <div class="panel">
-          <div class="big-icon danger">✦</div>
-          <h2>GAME OVER</h2>
+      </section>
 
-          <p>
-            You survived for
-            <strong id="finalTime">0</strong>s
-          </p>
 
-          <div class="final-score">
-            <span>SCORE</span>
-            <strong id="finalScore">0</strong>
+      <!-- KITCHEN -->
+
+      <section class="kitchen-panel">
+
+        <div class="section-title">
+          <h2>Kitchen</h2>
+          <span id="selectedCustomer">No order selected</span>
+        </div>
+
+
+        <!-- CURRENT ORDER -->
+
+        <div class="order-box">
+
+          <div class="order-title">
+            <span>CURRENT ORDER</span>
+            <span id="orderStatus">—</span>
           </div>
 
-          <p id="newBest" class="new-best hidden">
-            ✨ NEW HIGH SCORE ✨
-          </p>
+          <div id="currentOrder" class="current-order">
+            Select a customer.
+          </div>
 
-          <button id="restartBtn" class="main-btn">
-            PLAY AGAIN
-          </button>
         </div>
+
+
+        <!-- FOOD BUTTONS -->
+
+        <div class="category">
+
+          <h3>Food</h3>
+
+          <div class="food-grid">
+
+            <button class="food-button" data-item="burger">
+              <span class="food-icon">🍔</span>
+              <span>BURGER</span>
+              <small>$7</small>
+            </button>
+
+            <button class="food-button" data-item="fries">
+              <span class="food-icon">🍟</span>
+              <span>FRIES</span>
+              <small>$4</small>
+            </button>
+
+            <button class="food-button" data-item="cake">
+              <span class="food-icon">🍰</span>
+              <span>CAKE</span>
+              <small>$6</small>
+            </button>
+
+            <button class="food-button" data-item="pancakes">
+              <span class="food-icon">🥞</span>
+              <span>PANCAKES</span>
+              <small>$8</small>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="category">
+
+          <h3>Drinks</h3>
+
+          <div class="food-grid">
+
+            <button class="food-button" data-item="coffee">
+              <span class="food-icon">☕</span>
+              <span>COFFEE</span>
+              <small>$4</small>
+            </button>
+
+            <button class="food-button" data-item="tea">
+              <span class="food-icon">🍵</span>
+              <span>TEA</span>
+              <small>$3</small>
+            </button>
+
+            <button class="food-button" data-item="soda">
+              <span class="food-icon">🥤</span>
+              <span>SODA</span>
+              <small>$3</small>
+            </button>
+
+            <button class="food-button" data-item="juice">
+              <span class="food-icon">🧃</span>
+              <span>JUICE</span>
+              <small>$5</small>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="serve-area">
+
+          <button id="serveButton" class="serve-button">
+            SERVE ORDER
+          </button>
+
+          <button id="clearButton" class="clear-button">
+            CLEAR
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- BOTTOM -->
+
+    <section class="bottom">
+
+      <div class="upgrades">
+
+        <div class="section-title">
+          <h2>Upgrades</h2>
+          <span>Your café</span>
+        </div>
+
+        <div class="upgrade-grid">
+
+          <button class="upgrade" data-upgrade="patience">
+
+            <span class="upgrade-icon">⏳</span>
+
+            <div>
+              <strong>Better Chairs</strong>
+              <small>Customers wait longer.</small>
+            </div>
+
+            <b id="patiencePrice">$30</b>
+
+          </button>
+
+
+          <button class="upgrade" data-upgrade="tips">
+
+            <span class="upgrade-icon">💰</span>
+
+            <div>
+              <strong>Tip Jar</strong>
+              <small>Increase tips.</small>
+            </div>
+
+            <b id="tipsPrice">$40</b>
+
+          </button>
+
+
+          <button class="upgrade" data-upgrade="speed">
+
+            <span class="upgrade-icon">⚡</span>
+
+            <div>
+              <strong>Faster Kitchen</strong>
+              <small>More customers appear.</small>
+            </div>
+
+            <b id="speedPrice">$50</b>
+
+          </button>
+
+        </div>
+
       </div>
+
+
+      <div class="log-panel">
+
+        <div class="section-title">
+          <h2>Activity</h2>
+        </div>
+
+        <div id="log" class="log"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DAY COMPLETE -->
+
+    <div id="dayOverlay" class="overlay hidden">
+
+      <div class="modal">
+
+        <div class="modal-icon">🌙</div>
+
+        <h2>DAY COMPLETE</h2>
+
+        <p>The café is closing.</p>
+
+        <div class="summary">
+
+          <div>
+            <span>Revenue</span>
+            <strong id="summaryRevenue">$0</strong>
+          </div>
+
+          <div>
+            <span>Customers</span>
+            <strong id="summaryCustomers">0</strong>
+          </div>
+
+          <div>
+            <span>Reputation</span>
+            <strong id="summaryRep">0</strong>
+          </div>
+
+        </div>
+
+        <button id="nextDayButton" class="main-button">
+          OPEN TOMORROW
+        </button>
+
+      </div>
+
     </div>
 
-    <footer>
-      <span id="status">SYSTEM READY</span>
-      <span>NEON DODGE v1.0</span>
-    </footer>
+
+    <!-- HELP -->
+
+    <div id="helpOverlay" class="overlay hidden">
+
+      <div class="modal">
+
+        <div class="modal-icon">☕</div>
+
+        <h2>HOW TO PLAY</h2>
+
+        <div class="help-text">
+
+          <p>1. Click a customer.</p>
+          <p>2. Read their order.</p>
+          <p>3. Click the correct food and drinks.</p>
+          <p>4. Click SERVE ORDER.</p>
+          <p>5. Earn money and tips.</p>
+          <p>6. Buy upgrades.</p>
+          <p>7. Keep everyone happy.</p>
+
+        </div>
+
+        <button id="closeHelp" class="main-button">
+          GOT IT
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
